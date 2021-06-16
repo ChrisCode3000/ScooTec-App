@@ -10,9 +10,9 @@ def myClick():
 
 #Creating a label widget
 #   'padx' and 'pady' for button size, 'command=' for running the function
-myLabel1 = Label(root, text="Hello World!")
-myLabel2 = Label(root, text="This is a GUI Programm.")
-myButton1 = Button(root, text="This is a Button.", padx=50, pady=30, command=myClick)
+myLabel1 = Label(root, text="Big Diccus Corp")
+myLabel2 = Label(root, text="Digger Tech")
+myButton1 = Button(root, text="Click me, now!", padx=50, pady=30, command=myClick)
 
 #Showing it onto the screen   
 #  .grid(row=0, column=0) for position .pack() for none          
