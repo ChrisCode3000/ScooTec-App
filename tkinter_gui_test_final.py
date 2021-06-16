@@ -3,9 +3,11 @@ from tkinter import *
 
 #Setting up the GUI
 root = Tk()
+root.title("Simple GUI") #GUI window title
 
 #Creating an input box
 myInput1 = Entry(root, width=50, borderwidth=5)
+myInput1.insert(0, "Enter A Text Here") #Predefine an input
 
 #Creating a function that is executed when clicking the button
 def myClick():
