@@ -27,8 +27,8 @@ def myClick():
 #Creating a label widget
 #   'padx' and 'pady' for button size, 'command=' for running the function, 'fg=' for forground color, 'bg=' for background color
 myLabel1 = Label(root, text="Hello World!")
-myLabel2 = Label(root, text="This is a GUI Programm.")
-myButton1 = Button(root, text="This is a Button.", padx=50, pady=30, command=myClick, fg="red", bg="black", borderwidth=5)
+myLabel2 = Label(root, text="This is a GUI programm.")
+myButton1 = Button(root, text="This is a button. Click me!", padx=50, pady=30, command=myClick, fg="red", bg="white", borderwidth=5)
 
 #Showing it onto the screen   
 #  .grid(row=0, column=0) for position .pack() for none          
