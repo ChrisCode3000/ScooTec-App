@@ -4,8 +4,8 @@ import sqlite3
 
 
 root = Tk()
-root.title('Codemy.com - Learn To Code!')
-#root.iconbitmap('c:/gui/codemy.ico')
+root.title('Register')
+root.iconbitmap('Scooter.ico')
 root.geometry("400x600")
 
 # Databases
