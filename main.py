@@ -9,32 +9,89 @@ root.title('ScooTec Rentals')   #Setting the window title
 root.iconbitmap('Scooter.ico')  #Setting the window icon
 root.geometry("165x220")        #Setting the window size
 
+#Global variables / label widgets
+L7 = Label(root)
+L8 = Label(root)
+L9 = Label(root)
+L10 = Label(root)
+
 #Creating functions that are executed when clicking the buttons
-def C1():
+def C1(): #C1 = New Window Function
     T1 = Toplevel(root)     #Open a new window
 	#T1.title('Rent A Scooter')
 	#T1.iconbitmap('Scooter.ico')
+
+    def C3(): #C3 = Calculating and printing the rental details   
+        #Calling Global Variables
+        global L7, L8, L9, L10 
+        #Clearing the Labels before filling them with new values
+        L7.destroy()       
+        L8.destroy()
+        L9.destroy()         
+        L10.destroy()
+
+        #Calculating the Price 
+        #Converting from string to float and back to string, rounding to 2 decimal places
+        Distance = float(I4.get())
+        Price = str(round(0.99+0.18*Distance, 2))
+      
+        #Creating label widgets that show the rental details
+        L6 = Label(T1, text="Rental Details:")
+        L7 = Label(T1, text="User ID: " + I2.get())
+        L8 = Label(T1, text="Name:")
+        L9 = Label(T1, text="Distance: " + I4.get() + " km")
+        L10 = Label(T1, text="Price: " + Price + " €")
+        L11 = Label(T1, text="(0.99€ unlockfee + 0.18€ per km)")
+        L12 = Label(T1, text="")
+
+        #Printing them onto the screen
+        L6.grid(row=6, column=0, columnspan=2)
+        L7.grid(row=7, column=0)
+        L8.grid(row=8, column=0)
+        L9.grid(row=9, column=0)
+        L10.grid(row=10, column=0)
+        L11.grid(row=11, column=0, columnspan=2)
+        L12.grid(row=12, column=0, columnspan=2)
     
-   
+    # Create Query Function for searching the User by User ID
+    def query():
+        # Create a database or connect to one
+        conn = sqlite3.connect('address_book.db')
+        # Create cursor
+        c = conn.cursor()
+
+        # Query the database
+        c.execute("SELECT *, oid FROM addresses")
+        records = c.fetchone()
+        print(records)
+
+        # Loop Thru Results
+        print_records = ''
+        for record in records[1]:
+            print_records += str(record) + ""
+
+        query_label = Label(T1, text=print_records)
+        query_label.grid(row=8, column=1)
+
+        #Commit Changes
+        conn.commit()
+
+        # Close Connection 
+        conn.close()
+
     #Creating label widgets in the new window
     L1 = Label(T1, text="Start your scooter rental here:")
     L2 = Label(T1, text="User ID:")
     I2 = Entry(T1, width=10, borderwidth=5)
     L3 = Label(T1, text="Scooter ID:")
     I3 = Entry(T1, width=10, borderwidth=5)
-    L4 = Label(T1, text="Rental Distance:")
+    L4 = Label(T1, text="Rental Distance: (km)")
     I4 = Entry(T1, width=10, borderwidth=5)
     L5 = Label(T1, text="")
-    L6 = Label(T1, text="Rental Details:")
-    L7 = Label(T1, text="User ID: ")
-    L8 = Label(T1, text="Name:")
-    L9 = Label(T1, text="Distance:")
-    L10 = Label(T1, text="Price:")
-    L11 = Label(T1, text="")
-    B1 = Button(T1, text="start")
-    
-    L12 = Label(T1, text="Don't have an User ID yet?")
-    B12 = Button(T1, text="register now") 
+    B1 = Button(T1, text="start", command=lambda:[C3(),query()])
+
+    L13 = Label(T1, text="Don't have an User ID yet?")
+    B13 = Button(T1, text="register now") 
     B0 = Button(T1, text="close window", command=T1.destroy)
 
     #Showing the label widgets in the new window
@@ -47,26 +104,17 @@ def C1():
     I4.grid(row=3, column=1)  
     B1.grid(row=4, column=0, columnspan=2) 
     L5.grid(row=5, column=0)
-    L6.grid(row=6, column=0, columnspan=2)
-    L7.grid(row=7, column=0)
-    L8.grid(row=8, column=0)
-    L9.grid(row=9, column=0)
-    L10.grid(row=10, column=0)
-    L11.grid(row=11, column=0)
-    L12.grid(row=12, column=0)
-    B12.grid(row=12, column=1)
-    B0.grid(row=13, column=0, columnspan=2) 
-    
-    
-
-
+    L13.grid(row=13, column=0)
+    B13.grid(row=13, column=1)
+    B0.grid(row=14, column=0, columnspan=2) 
+     
 def C2():
     T2 = Toplevel()
 	#T2.title('Rent A Scooter')
 	#T2.iconbitmap('Scooter.ico')
     B2 = Button(T2, text="close window", command=T2.destroy).pack()
 
-#Creating label widgets
+#Creating label widgets in main window
 #   'padx' and 'pady' for button size, 'command=' for running the function, 'fg=' for forground color, 'bg=' for background color
 L1 = Label(root, text="Welcome at ScooTec Rentals!")
 L2 = Label(root, text="What would you like to do?")
