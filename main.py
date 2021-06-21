@@ -67,13 +67,13 @@ def C1(): #C1 = New Window Function
         query_label.destroy()
 
         # Create a database or connect to one
-        conn = sqlite3.connect('address_book.db')
+        conn = sqlite3.connect('scootec_data.db')
         # Create cursor
         c = conn.cursor()
 
         # Query the database for the user id
         user_id = int(I2.get())
-        c.execute("SELECT * FROM addresses WHERE oid=?", (user_id,))
+        c.execute("SELECT * FROM users WHERE oid=?", (user_id,))
         records = c.fetchmany(1)
         print(records)
 

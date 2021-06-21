@@ -11,14 +11,14 @@ db_root.geometry("400x600")
 # Databases
 
 # Create a database or connect to one
-conn = sqlite3.connect('address_book.db')
+conn = sqlite3.connect('scootec_data.db')
 
 # Create cursor
 c = conn.cursor()
 
 # Create table
 '''
-c.execute("""CREATE TABLE addresses (
+c.execute("""CREATE TABLE users (
 		first_name text,
 		last_name text,
 		address text,
@@ -30,13 +30,13 @@ c.execute("""CREATE TABLE addresses (
 # Create Update function to update a record
 def update():
 	# Create a database or connect to one
-	conn = sqlite3.connect('address_book.db')
+	conn = sqlite3.connect('scootec_data.db')
 	# Create cursor
 	c = conn.cursor()
 
 	record_id = delete_box.get()
 
-	c.execute("""UPDATE addresses SET
+	c.execute("""UPDATE users SET
 		first_name = :first,
 		last_name = :last,
 		address = :address,
@@ -74,13 +74,13 @@ def edit():
 	#editor.iconbitmap('c:/gui/codemy.ico')
 	editor.geometry("400x300")
 	# Create a database or connect to one
-	conn = sqlite3.connect('address_book.db')
+	conn = sqlite3.connect('scootec_data.db')
 	# Create cursor
 	c = conn.cursor()
 
 	record_id = delete_box.get()
 	# Query the database
-	c.execute("SELECT * FROM addresses WHERE oid = " + record_id)
+	c.execute("SELECT * FROM users WHERE oid = " + record_id)
 	records = c.fetchall()
 	
 	#Create Global Variables for text box names
@@ -139,12 +139,12 @@ def edit():
 # Create Function to Delete A Record
 def delete():
 	# Create a database or connect to one
-	conn = sqlite3.connect('address_book.db')
+	conn = sqlite3.connect('scootec_data.db')
 	# Create cursor
 	c = conn.cursor()
 
 	# Delete a record
-	c.execute("DELETE from addresses WHERE oid = " + delete_box.get())
+	c.execute("DELETE from users WHERE oid = " + delete_box.get())
 
 	delete_box.delete(0, END)
 
@@ -159,12 +159,12 @@ def delete():
 # Create Submit Function For database
 def submit():
 	# Create a database or connect to one
-	conn = sqlite3.connect('address_book.db')
+	conn = sqlite3.connect('scootec_data.db')
 	# Create cursor
 	c = conn.cursor()
 
 	# Insert Into Table
-	c.execute("INSERT INTO addresses VALUES (:f_name, :l_name, :address, :city, :state, :zipcode)",
+	c.execute("INSERT INTO users VALUES (:f_name, :l_name, :address, :city, :state, :zipcode)",
 			{
 				'f_name': f_name.get(),
 				'l_name': l_name.get(),
@@ -192,12 +192,12 @@ def submit():
 # Create Query Function
 def query():
 	# Create a database or connect to one
-	conn = sqlite3.connect('address_book.db')
+	conn = sqlite3.connect('scootec_data.db')
 	# Create cursor
 	c = conn.cursor()
 
 	# Query the database
-	c.execute("SELECT *, oid FROM addresses")
+	c.execute("SELECT *, oid FROM users")
 	records = c.fetchall()
 	# print(records)
 
