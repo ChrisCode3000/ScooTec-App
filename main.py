@@ -9,11 +9,12 @@ root.title('ScooTec Rentals')   #Setting the window title
 root.iconbitmap('Scooter.ico')  #Setting the window icon
 root.geometry("165x220")        #Setting the window size
 
-#Global variables / label widgets
+#Global variables / label widgets that are necesary 
 L7 = Label(root)
 L8 = Label(root)
 L9 = Label(root)
 L10 = Label(root)
+query_label = Label(root)
 
 #Creating functions that are executed when clicking the buttons
 def C1(): #C1 = New Window Function
@@ -46,32 +47,38 @@ def C1(): #C1 = New Window Function
 
         #Printing them onto the screen
         L6.grid(row=6, column=0, columnspan=2)
-        L7.grid(row=7, column=0)
-        L8.grid(row=8, column=0)
-        L9.grid(row=9, column=0)
-        L10.grid(row=10, column=0)
+        L7.grid(row=7, column=0, columnspan=2)
+        L8.grid(row=8, column=0, columnspan=2)
+        L9.grid(row=9, column=0, columnspan=2)
+        L10.grid(row=10, column=0, columnspan=2)
         L11.grid(row=11, column=0, columnspan=2)
         L12.grid(row=12, column=0, columnspan=2)
     
     # Create Query Function for searching the User by User ID
     def query():
+        #Calling Global Variables
+        global query_label
+        #Clearing the Labels before filling them with new values
+        query_label.destroy()
+
         # Create a database or connect to one
         conn = sqlite3.connect('address_book.db')
         # Create cursor
         c = conn.cursor()
 
-        # Query the database
-        c.execute("SELECT *, oid FROM addresses")
-        records = c.fetchone()
+        # Query the database for the user id
+        user_id = int(I2.get())
+        c.execute("SELECT * FROM addresses WHERE oid=?", (user_id,))
+        records = c.fetchmany(1)
         print(records)
 
         # Loop Thru Results
         print_records = ''
-        for record in records[1]:
-            print_records += str(record) + ""
+        for record in records:
+            print_records += str(record[0]) + " " + str(record[1]) + " "
 
-        query_label = Label(T1, text=print_records)
-        query_label.grid(row=8, column=1)
+        query_label = Label(T1, text="Name: " + print_records)
+        query_label.grid(row=8, column=0, columnspan=2)
 
         #Commit Changes
         conn.commit()
