@@ -4,7 +4,7 @@ from tkinter import *
 import sqlite3
 
 db_root = Tk()
-db_root.title('Register')
+db_root.title('Register Now')
 db_root.iconbitmap('Scooter.ico')
 db_root.geometry("400x600")
 
@@ -70,7 +70,7 @@ def edit():
 	db_root.withdraw()
 	global editor
 	editor = Tk()
-	editor.title('Update A Record')
+	editor.title('Change User Data')
 	#editor.iconbitmap('c:/gui/codemy.ico')
 	editor.geometry("400x300")
 	# Create a database or connect to one
@@ -130,7 +130,7 @@ def edit():
 
 	
 	# Create a Save Button To Save edited record
-	edit_btn = Button(editor, text="Save Record", command=update)
+	edit_btn = Button(editor, text="Save Changes", command=update)
 	edit_btn.grid(row=6, column=0, columnspan=2, pady=10, padx=10, ipadx=145)
 
 	
@@ -250,19 +250,19 @@ delete_box_label = Label(db_root, text="Select ID")
 delete_box_label.grid(row=9, column=0, pady=5)
 
 # Create Submit Button
-submit_btn = Button(db_root, text="Add Record To Database", command=submit)
+submit_btn = Button(db_root, text="Add New User To Database", command=submit)
 submit_btn.grid(row=6, column=0, columnspan=2, pady=10, padx=10, ipadx=100)
 
 # Create a Query Button
-query_btn = Button(db_root, text="Show Records", command=query)
+query_btn = Button(db_root, text="Show User List", command=query)
 query_btn.grid(row=7, column=0, columnspan=2, pady=10, padx=10, ipadx=137)
 
 #Create A Delete Button
-delete_btn = Button(db_root, text="Delete Record", command=delete)
+delete_btn = Button(db_root, text="Delete User", command=delete)
 delete_btn.grid(row=10, column=0, columnspan=2, pady=10, padx=10, ipadx=136)
 
 # Create an Update Button
-edit_btn = Button(db_root, text="Edit Record", command=edit)
+edit_btn = Button(db_root, text="Edit User Details", command=edit)
 edit_btn.grid(row=11, column=0, columnspan=2, pady=10, padx=10, ipadx=143)
 
 

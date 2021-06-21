@@ -22,9 +22,10 @@ def register(): #Opening another file inside this file
     exec(open("./database.py").read(), globals())
 
 def C1(): #C1 = New Window Function
+    global T1
     T1 = Toplevel(root)     #Open a new window
-	#T1.title('Rent A Scooter')
-	#T1.iconbitmap('Scooter.ico')
+    T1.title('Rent A Scooter')
+    T1.iconbitmap('Scooter.ico')
 
     def C3(): #C3 = Calculating and printing the rental details   
         #Calling Global Variables
@@ -35,17 +36,17 @@ def C1(): #C1 = New Window Function
         L9.destroy()         
         L10.destroy()
 
-        #Calculating the Price 
+        #Calculating the Price (0.99€ unlockfee + 0.18€ per km)
         #Converting from string to float and back to string, rounding to 2 decimal places
-        Distance = float(I4.get())
-        Price = str(round(0.99+0.18*Distance, 2))
+        distance = float(I4.get())
+        price = str(round(0.99+0.18*distance, 2))
       
         #Creating label widgets that show the rental details
         L6 = Label(T1, text="Rental Details:")
         L7 = Label(T1, text="User ID: " + I2.get())
         L8 = Label(T1, text="Name:")
         L9 = Label(T1, text="Distance: " + I4.get() + " km")
-        L10 = Label(T1, text="Price: " + Price + " €")
+        L10 = Label(T1, text="Price: " + price + " €")
         L11 = Label(T1, text="(0.99€ unlockfee + 0.18€ per km)")
         L12 = Label(T1, text="")
 
