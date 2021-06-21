@@ -90,13 +90,14 @@ def C1(): #C1 = New Window Function
 
         # Close Connection 
         conn.close()
+    
 
     #Creating label widgets in the "rent a scooter" process window (T1)
     L1 = Label(T1, text="Start your scooter rental here:")
     L2 = Label(T1, text="User ID:")
     I2 = Entry(T1, width=10, borderwidth=5)
-    #L3 = Label(T1, text="Scooter ID:")
-    #I3 = Entry(T1, width=10, borderwidth=5)
+    L3 = Label(T1, text="Scooter ID:")
+    I3 = Entry(T1, width=10, borderwidth=5)
     L4 = Label(T1, text="Rental Distance: (km)")
     I4 = Entry(T1, width=10, borderwidth=5)
     L5 = Label(T1, text="")
@@ -109,8 +110,8 @@ def C1(): #C1 = New Window Function
     L1.grid(row=0, column=0, columnspan=2) 
     L2.grid(row=1, column=0)
     I2.grid(row=1, column=1)  
-    #L3.grid(row=2, column=0)
-    #I3.grid(row=2, column=1)  
+    L3.grid(row=2, column=0)
+    I3.grid(row=2, column=1)  
     L4.grid(row=3, column=0)
     I4.grid(row=3, column=1)  
     B1.grid(row=4, column=0, columnspan=2) 
