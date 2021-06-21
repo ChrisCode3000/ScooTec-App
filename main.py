@@ -3,7 +3,7 @@ from tkinter import *           #GUI Library
 # from PIL import ImageTk,Image   #Image Library
 import sqlite3                  #Database Library
 
-
+#GUI Settings
 root = Tk() #Creating the main GUI window
 root.title('ScooTec Rentals')   #Setting the window title
 root.iconbitmap('Scooter.ico')  #Setting the window icon
@@ -17,6 +17,10 @@ L10 = Label(root)
 query_label = Label(root)
 
 #Creating functions that are executed when clicking the buttons
+
+def register(): #Opening another file inside this file
+    exec(open("./database.py").read(), globals())
+
 def C1(): #C1 = New Window Function
     T1 = Toplevel(root)     #Open a new window
 	#T1.title('Rent A Scooter')
@@ -86,7 +90,7 @@ def C1(): #C1 = New Window Function
         # Close Connection 
         conn.close()
 
-    #Creating label widgets in the new window
+    #Creating label widgets in the "rent a scooter" process window (T1)
     L1 = Label(T1, text="Start your scooter rental here:")
     L2 = Label(T1, text="User ID:")
     I2 = Entry(T1, width=10, borderwidth=5)
@@ -96,9 +100,8 @@ def C1(): #C1 = New Window Function
     I4 = Entry(T1, width=10, borderwidth=5)
     L5 = Label(T1, text="")
     B1 = Button(T1, text="start", command=lambda:[C3(),query()])
-
     L13 = Label(T1, text="Don't have an User ID yet?")
-    B13 = Button(T1, text="register now") 
+    B13 = Button(T1, text="register now", command=register) 
     B0 = Button(T1, text="close window", command=T1.destroy)
 
     #Showing the label widgets in the new window
@@ -115,18 +118,12 @@ def C1(): #C1 = New Window Function
     B13.grid(row=13, column=1)
     B0.grid(row=14, column=0, columnspan=2) 
      
-def C2():
-    T2 = Toplevel()
-	#T2.title('Rent A Scooter')
-	#T2.iconbitmap('Scooter.ico')
-    B2 = Button(T2, text="close window", command=T2.destroy).pack()
-
-#Creating label widgets in main window
+#Creating label widgets in main window (root)
 #   'padx' and 'pady' for button size, 'command=' for running the function, 'fg=' for forground color, 'bg=' for background color
 L1 = Label(root, text="Welcome at ScooTec Rentals!")
 L2 = Label(root, text="What would you like to do?")
 B1 = Button(root, text="rent a scooter", padx=40, pady=20, command=C1, fg="black", bg="white", borderwidth=5)
-B2 = Button(root, text="register", padx=40, pady=20, command=C2, fg="black", bg="white", borderwidth=5)
+B2 = Button(root, text="register", command=register, padx=40, pady=20, fg="black", bg="white", borderwidth=5)
 B3 = Button(root, text="close window", command=root.destroy, bg="white", borderwidth=5)
 
 #Showing them onto the screen   
