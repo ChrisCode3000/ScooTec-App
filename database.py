@@ -1,6 +1,5 @@
 #Importing the used librarys
 from tkinter import *
-# from PIL import ImageTk,Image
 import sqlite3
 
 db_root = Tk()

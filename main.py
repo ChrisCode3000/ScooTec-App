@@ -1,6 +1,5 @@
 #Importing the used librarys
 from tkinter import *           #GUI Library
-# from PIL import ImageTk,Image   #Image Library
 import sqlite3                  #Database Library
 
 #GUI Settings
