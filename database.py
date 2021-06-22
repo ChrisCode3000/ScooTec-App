@@ -70,7 +70,7 @@ def edit():
 	global editor
 	editor = Tk()
 	editor.title('Change User Data')
-	#editor.iconbitmap('c:/gui/codemy.ico')
+	editor.iconbitmap('Scooter.ico')
 	editor.geometry("400x300")
 	# Create a database or connect to one
 	conn = sqlite3.connect('scootec_data.db')
