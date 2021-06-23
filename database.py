@@ -26,7 +26,7 @@ c.execute("""CREATE TABLE users (
 		zipcode integer
 		)""")
 '''
-# Create Update function to update a record
+# Create Update function to add a record
 def update():
 	# Create a database or connect to one
 	conn = sqlite3.connect('scootec_data.db')
@@ -64,7 +64,7 @@ def update():
 	editor.destroy()
 	db_root.deiconify()
 
-# Create Edit function to update a record
+# Create Edit function to change a record
 def edit():
 	db_root.withdraw()
 	global editor
