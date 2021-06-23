@@ -17,7 +17,7 @@ query_label = Label(root)
 
 #Creating functions that are executed when clicking the buttons
 
-def register(): #Opening another file inside this file (database.py)
+def register(): #inception of this file (database.py)
     exec(open("./database.py").read(), globals())
 
 def C1(): #C1 = New Window Function
