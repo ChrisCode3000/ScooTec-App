@@ -16,6 +16,10 @@ L10 = Label(root)
 query_label = Label(root)
 
 #Creating functions that are executed when clicking the buttons
+def pricef(distance):
+    distance = float(distance)
+    price = str(round(0.99+0.18*distance,2))
+    return price
 
 def register(): #inception of this file (database.py)
     exec(open("./database.py").read(), globals())
