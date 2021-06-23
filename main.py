@@ -135,5 +135,5 @@ B1.grid(row=2, column=0)
 B2.grid(row=3, column=0) 
 B3.grid(row=4, column=0) 
 
-#Making the programm main loop until closed
+#Making the programm main loop until closed.
 root.mainloop()
